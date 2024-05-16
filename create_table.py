@@ -26,9 +26,9 @@ def main():
     sj_api_token = os.environ["SJ_API_TOKEN"]
     title_sj = "SuperJob Moscow"
     title_hh = "HeadHunter Moscow"
-    sj_statistic = get_superjob_statistics()
+    sj_statistic = get_superjob_statistics(sj_api_token)
     hh_statistic = get_hh_statistic()
-    sj_table = create_table(sj_statistic, title_sj, sj_api_token)
+    sj_table = create_table(sj_statistic, title_sj)
     hh_table = create_table(hh_statistic, title_hh)
     print(sj_table.table)
     print(hh_table.table)
