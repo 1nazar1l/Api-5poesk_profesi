@@ -38,7 +38,8 @@ def get_hh_statistic():
                     salary_to = salary["to"]
                     calculated_salary  = predict_rub_salary(salary_from,salary_to)
                     sum = sum+calculated_salary
-                    vacancies_processed+=1
+                    if calculated_salary:
+                        vacancies_processed+=1
 
             if vacancies_processed:
                 average_salary = round(sum/vacancies_processed)
