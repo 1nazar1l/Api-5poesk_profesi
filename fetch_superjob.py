@@ -21,7 +21,7 @@ def get_superjob_vacancies(language, page, sj_api_token):
     return response.json()
 
 
-def get_superjob_statistics():
+def get_superjob_statistics(sj_api_token):
     languages = ["Python","Java","PHP","C++","C#","Ruby","go","1c"]
     profession_statistics_sj = {}
 
@@ -31,7 +31,7 @@ def get_superjob_statistics():
         average_salary = 0
 
         for page in count(0):
-            vacancies = get_superjob_vacancies(language, page)
+            vacancies = get_superjob_vacancies(language, page, sj_api_token)
             if not vacancies["more"]:
                 break
             for vacancy in vacancies['objects']:
@@ -41,7 +41,8 @@ def get_superjob_statistics():
                 if vacancy["currency"] == 'rub':
                     salary = predict_rub_salary(salary_from,salary_to)
                     sum = sum + salary
-                    vacancies_processed+=1
+                    if salary:
+                        vacancies_processed+=1
 
         if vacancies_processed:
             average_salary = round(sum/vacancies_processed)
