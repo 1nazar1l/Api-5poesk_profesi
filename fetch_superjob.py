@@ -32,7 +32,8 @@ def get_superjob_statistics():
 
         for page in count(0):
             vacancies = get_superjob_vacancies(language, page)
-
+            if not vacancies["more"]:
+                break
             for vacancy in vacancies['objects']:
                 salary_from = vacancy['payment_from']
                 salary_to = vacancy['payment_to']

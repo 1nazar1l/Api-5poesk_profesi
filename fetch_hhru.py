@@ -26,8 +26,11 @@ def get_hh_statistic():
 
         for page in count(0):
             vacansies = get_hh_vacancies(language, page)
+            if page >= vacansies["pages"] - 1:
+                break
             for vacancy in vacansies["items"]:
                 vacancy_salary = vacancy["salary"]
+                
                 
                 if vacancy_salary and vacancy_salary["currency"] == 'RUR':
                     salary = vacancy["salary"]
@@ -49,4 +52,5 @@ def get_hh_statistic():
                 "average_salary": average_salary
             }
             profession_statistics_hhru[language] = profession
+ 
     return profession_statistics_hhru
