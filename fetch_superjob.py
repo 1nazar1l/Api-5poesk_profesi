@@ -1,15 +1,11 @@
 import requests
 from itertools import count
 from math_tools import predict_rub_salary
-from dotenv import load_dotenv
-import os
 
-def get_superjob_vacancies(language, page):
-    load_dotenv()
-    sj_api = os.environ["SJ_API"]
+def get_superjob_vacancies(language, page, sj_api_token):
     url = "https://api.superjob.ru/2.0/vacancies/"
     headers = {
-        "X-Api-App-Id": sj_api
+        "X-Api-App-Id": sj_api_token
     }
     elem_per_page = 100
     industry_id = 48
@@ -30,7 +26,6 @@ def get_superjob_statistics():
     profession_statistics_sj = {}
 
     for language in languages:
-        summa = 0
         sum = 0
         vacancies_processed = 0
         average_salary = 0
