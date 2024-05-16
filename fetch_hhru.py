@@ -37,11 +37,11 @@ def get_hh_statistic():
                     sum = sum+calculated_salary
                     vacancies_processed+=1
 
-            if vacancies_processed == 0:
+            if vacancies_processed:
+                average_salary = round(sum/vacancies_processed)
+            else:
                 print("vacancies_processed = 0")
                 average_salary = 0
-            else:
-                average_salary = round(sum/vacancies_processed)
 
             profession = {
                 "vacancies_found": vacansies["found"],
