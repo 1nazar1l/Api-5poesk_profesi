@@ -2,6 +2,7 @@ import requests
 from itertools import count
 from math_tools import predict_rub_salary
 
+
 def get_superjob_vacancies(language, page, sj_api_token):
     url = "https://api.superjob.ru/2.0/vacancies/"
     headers = {
@@ -32,17 +33,17 @@ def get_superjob_statistics(sj_api_token):
 
         for page in count(0):
             vacancies = get_superjob_vacancies(language, page, sj_api_token)
-            if not vacancies["more"]:
-                break
             for vacancy in vacancies['objects']:
                 salary_from = vacancy['payment_from']
                 salary_to = vacancy['payment_to']
-
                 if vacancy["currency"] == 'rub':
                     salary = predict_rub_salary(salary_from,salary_to)
                     sum = sum + salary
                     if salary:
                         vacancies_processed+=1
+
+            if not vacancies["more"]:
+                break
 
         if vacancies_processed:
             average_salary = round(sum/vacancies_processed)
@@ -54,3 +55,4 @@ def get_superjob_statistics(sj_api_token):
         }
         profession_statistics_sj[language] = profession
     return profession_statistics_sj
+

@@ -23,7 +23,7 @@ def create_table(lang_statistic,title):
 
 def main():
     load_dotenv()
-    sj_api_token = os.environ["SJ_API_TOKEN"]
+    sj_api_token = os.getenv("SJ_API_TOKEN")
     title_sj = "SuperJob Moscow"
     title_hh = "HeadHunter Moscow"
     sj_statistic = get_superjob_statistics(sj_api_token)
