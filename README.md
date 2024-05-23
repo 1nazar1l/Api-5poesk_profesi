@@ -10,5 +10,7 @@ pip install -r requirements.txt
 ```
 python create_table.py
 ```
+
+Для работы `fetch-superjob.py` нужно создать `.env` файл и создать переменную ``
 ## Цель проекта
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org). 
