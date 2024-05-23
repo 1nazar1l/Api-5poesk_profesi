@@ -11,6 +11,6 @@ pip install -r requirements.txt
 python create_table.py
 ```
 
-Для работы `fetch-superjob.py` нужно создать `.env` файл и создать переменную ``
+Для работы `fetch-superjob.py` нужно создать `.env` файл и создать переменную `SJ_API_TOKEN`. Api-token можно получить [здесь]() 
 ## Цель проекта
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org). 
